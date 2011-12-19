@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-16"?>
-<ServiceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serviceName="" osFamily="1" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
-  <Role name="PhpOnAzure.Web">
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="PhpOnAzure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="2" osVersion="*">
+  <Role name="WebRole">
+    <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=hwazstor1;AccountKey=YzUkHBz8upCtndMf7OvNlPyPf/vfzGm9jvEEqWN7O4BUAFAK/by1GXtvGNH+GQKFmbf7DsQzaenWSQ7vvQA91w==" />
+     <!-- <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />      -->
       <Setting name="offline" value="$offline$" />
       <Setting name="offline_message" value="$offline_message$" />
       <Setting name="sitename" value="$sitename$" />
@@ -28,9 +29,6 @@
       <Setting name="ftp_pass" value="$ftp_pass$" />
       <Setting name="ftp_root" value="$ftp_root$" />
       <Setting name="ftp_enable" value="$ftp_enable$" />
-      <Setting name="storage_type" value="$storage_type$" />
-      <Setting name="cloud_acc_name" value="$cloud_acc_name$" />
-      <Setting name="cloud_access_key" value="$cloud_access_key$" />
       <Setting name="offset" value="$offset$" />
       <Setting name="offset_user" value="$offset_user$" />
       <Setting name="mailer" value="$mailer$" />
@@ -73,10 +71,12 @@
       <Setting name="FileSystemDurabilityPlugin.ExcludePathsFromSync" value="" />   <!-- Optional. To exclude some folders from sync -->
       <Setting name="FileSystemDurabilityPlugin.ExcludeSubDirectories" value="false" /> <!-- To exclude sub directories, set this value as true -->
       <Setting name="FileSystemDurabilityPlugin.SyncFrequencyInSeconds" value="7200" /> <!-- Keep this value large to minimize Windows Azure Storage Transaction cost. Use 0 value to pause the sync. -->
-   </ConfigurationSettings>
-    <Instances count="1" />
+    </ConfigurationSettings>
+    <!-- Certificate for RDP access. Commented by default -->
+    <!--
     <Certificates>
-      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="B5877C77A2C6CC8485018458E41D2C34BFA01FAF" thumbprintAlgorithm="sha1" />
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" thumbprintAlgorithm="sha1"/>
     </Certificates>
+    -->
   </Role>
 </ServiceConfiguration>
