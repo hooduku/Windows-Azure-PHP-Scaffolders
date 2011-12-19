@@ -15,9 +15,10 @@ echo Building scaffold .phar file
  call scaffolder build -in="%PWD%\Joomla" -out="%PWD%\build\Joomla.phar"
 
 echo Creating project directories
-call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -DB_NAME database_name -DB_USER "user@lhost" -DB_PASSWORD "*******" -DB_HOST "******.database.windows.net"
+call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -db jbase -user "demosql@xXXXXXX" -password "SamHoustonXXX" -host "XXXX.database.windows.net"  
+
 
 REM -out="%PWD%\build\Joomla"
 
 echo Packaging project
-call package create -in="%PWD%\build\Joomla" -out="%PWD%\build" -dev=false
+package.bat create --InputPath=.\build\Joomla --RunDevFabric=false --OutputPath=.\package
