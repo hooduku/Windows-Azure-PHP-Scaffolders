@@ -86,15 +86,16 @@ class Joomla
              * 
              * $this->p->add('cmd_param_name', required(true|false), default value, help message string);
              */               
-	     $this->p->add('offline', true, '0', 'Joomla Site is offline');
-	     $this->p->add('offline_message', true, '0', 'This site is down for maintenance.<br /> Please check back again soon.');
-	     $this->p->add('display_offline_message', true, '1', 'This site is down for maintenance.<br /> Please check back again soon.');
-	     $this->p->add('sitename', true, '1', 'Joomla on Azure');
-	     $this->p->add('editor', true, '1', 'tinymce');
-	     $this->p->add('list_limit', true, '1', '20');
-	     $this->p->add('access', true, '1', 'Access to the site');
-	     $this->p->add('debug', true, '0', 'Non Debug mode.');
-	     $this->p->add('debug_lang', true, '0', 'Debug Language is english (UK) by default');
+	     $this->p->add('diagnosticsConnectionString', false, 'UseDevelopmentStorage=true', 'Connections string to storage for diagnostics');
+ 	     $this->p->add('offline', false, '0', 'Joomla Site is offline');
+	     $this->p->add('offline_message', false, '0', 'This site is down for maintenance.<br /> Please check back again soon.');
+             $this->p->add('display_offline_message', false, '1', 'This site is down for maintenance.<br /> Please check back again soon.');
+	     $this->p->add('sitename', false, '1', 'Joomla on Azure');
+	     $this->p->add('editor', false, '1', 'tinymce');
+	     $this->p->add('list_limit', false, '1', '20');
+	     $this->p->add('access', false, '1', 'Access to the site');
+	     $this->p->add('debug', false, '0', 'Non Debug mode.');
+	     $this->p->add('debug_lang', false, '0', 'Debug Language is english (UK) by default');
 	     $this->p->add('db', true, '', 'Name of database to store Joomla data in');
              $this->p->add('user', true, '', 'User account name with permissions to the Joomla database');
              $this->p->add('password', true, '', 'Password of account with permissions to the Joomla database');
@@ -104,14 +105,15 @@ class Joomla
              $this->p->add('live_site', false, '', 'Live Site');
              $this->p->add('secret', false, uniqid(), 'Secret');
              $this->p->add('gzip', false, '0', 'Secure auth key');
-             $this->p->add('error_reporting', false, '-1', 'default');
+	     $this->p->add('error_reporting', false, '-1', 'default');
              $this->p->add('helpurl', false, 'http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}', 'Help URL');
              $this->p->add('ftp_host', false, '127.0.0.1', 'FTP Host');
              $this->p->add('ftp_port', false, '21', 'FTP Port');
              $this->p->add('ftp_user', false, '', 'FTP User');
              $this->p->add('ftp_pass', false,'', 'FTP Password');
              $this->p->add('offset', false, 'UTC', 'Offset');
-             
+			 
+             			 
              $this->p->add('mailer', false, 'mail', 'Joomla Mail');
              $this->p->add('mailfrom', false, 'info@microsoft.com', 'Mail From');
              $this->p->add('fromname', false, 'Joomla on SQLazure', 'From Name');
@@ -124,8 +126,8 @@ class Joomla
              $this->p->add('smtpport', false, '25', 'Path of current site');
              $this->p->add('caching', false, '0', 'Caching');
              $this->p->add('cache_handler', false, 'file', 'cache handler');
-             $this->p->add('cachetime', true, '15', 'Cache Time');
-             $this->p->add('MetaDesc', true, '', 'Meta Description');
+             $this->p->add('cachetime', false, '15', 'Cache Time');
+             $this->p->add('MetaDesc', false, '', 'Meta Description');
              $this->p->add('MetaKeys', false, '', 'Meta Keys');
 	     $this->p->add('MetaTitle', false, '', 'Meta Title');
 	     $this->p->add('MetaAuthor', false, '', 'Meta Author');
@@ -138,12 +140,12 @@ class Joomla
              $this->p->add('tmp_path', false, '0', 'E:/approot/tmp');
              $this->p->add('lifetime', false, '15', 'Lifetime');
 	     $this->p->add('session_handler', false, 'database', 'SEF Suffix');
-             $this->p->add('source', false, 'C:/xampp/htdocs/Joomla', 'If there is an existing Joomla code base you can use it via a path');
-
+             $this->p->add('source', false, 'C:/Users/hooduku-Windows-Azure-PHP-Scaffolders-90698dc/Joomla/input', 'If there is an existing Joomla code base you can use it via a path');
+			 
              if(!$this->p->verify()) die($this->p->getError());
 
     }
-
+		
 
     /**
      * This method allows you to do any additional work beyond unpacking 
