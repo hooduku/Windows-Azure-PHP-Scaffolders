@@ -45,7 +45,7 @@ require_once('Params.class.php');
 require_once('FileSystem.class.php');
 
 /**
- * @command-handler WordPress
+ * @command-handler Joomla
  */ 
 class Joomla
 	extends Microsoft_WindowsAzure_CommandLine_PackageScaffolder_PackageScaffolderAbstract {
