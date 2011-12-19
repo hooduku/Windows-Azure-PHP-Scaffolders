@@ -15,7 +15,7 @@ echo Building scaffold .phar file
  call scaffolder build -in="%PWD%\Joomla" -out="%PWD%\build\Joomla.phar"
 
 echo Creating project directories
-call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -DB_NAME database_name -DB_USER "user@lhost" -DB_PASSWORD "*******" -DB_HOST "******.database.windows.net"  -sync_account "account enpoint" -sync_key "account key" 
+call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -DB_NAME database_name -DB_USER "user@lhost" -DB_PASSWORD "*******" -DB_HOST "******.database.windows.net"
 
 REM -out="%PWD%\build\Joomla"
 
