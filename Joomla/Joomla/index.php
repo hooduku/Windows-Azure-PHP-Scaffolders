@@ -140,7 +140,7 @@ class Joomla
              $this->p->add('tmp_path', false, '0', 'E:/approot/tmp');
              $this->p->add('lifetime', false, '15', 'Lifetime');
 	     $this->p->add('session_handler', false, 'database', 'SEF Suffix');
-             $this->p->add('source', false, 'C:/Users/hooduku-Windows-Azure-PHP-Scaffolders-90698dc/Joomla/input', 'If there is an existing Joomla code base you can use it via a path');
+             $this->p->add('source', false, '', 'If there is an existing Joomla code base you can use it via a path');
 			 
              if(!$this->p->verify()) die($this->p->getError());
 
@@ -172,7 +172,7 @@ class Joomla
             // Download and unpack Joomla
             $this->log('Downloading Joomla');
 			//Packaged Joomla.zip on storage/svn or git
-            $file = $this->curlFile("", $tmp);
+            $file = $this->curlFile("http://hazure.blob.core.windows.net/j17/j17.zip", $tmp);
             $this->log('Extracting Joomla');
             $this->unzip($file, $tmp);
             $this->log('Moving Joomla files to ' . $this->mAppRoot);
