@@ -43,6 +43,7 @@ limitations under the License.
 
 require_once('Params.class.php');
 require_once('FileSystem.class.php');
+require_once('Config.class.php');
 
 /**
  * @command-handler Joomla
@@ -86,32 +87,32 @@ class Joomla
              * 
              * $this->p->add('cmd_param_name', required(true|false), default value, help message string);
              */               
-	     $this->p->add('offline', true, '0', 'Joomla Site is offline');
-	     $this->p->add('offline_message', true, '0', 'This site is down for maintenance.<br /> Please check back again soon.');
-	     $this->p->add('display_offline_message', true, '1', 'This site is down for maintenance.<br /> Please check back again soon.');
-	     $this->p->add('sitename', true, '1', 'Joomla on Azure');
-	     $this->p->add('editor', true, '1', 'tinymce');
-	     $this->p->add('list_limit', true, '1', '20');
-	     $this->p->add('access', true, '1', 'Access to the site');
-	     $this->p->add('debug', true, '0', 'Non Debug mode.');
-	     $this->p->add('debug_lang', true, '0', 'Debug Language is english (UK) by default');
-	     $this->p->add('db', true, '', 'Name of database to store Joomla data in');
+			 $this->p->add('diagnosticsConnectionString', false, 'UseDevelopmentStorage=true', 'Connections string to storage for diagnostics');
+			 $this->p->add('offline', false, '0', 'Joomla Site is offline');
+			 $this->p->add('offline_message', false, '0', 'This site is down for maintenance.<br /> Please check back again soon.');
+			 $this->p->add('display_offline_message', false, '1', 'This site is down for maintenance.<br /> Please check back again soon.');
+			 $this->p->add('sitename', false, '1', 'Joomla on Azure');
+			 $this->p->add('editor', false, '1', 'tinymce');
+			 $this->p->add('list_limit', false, '1', '20');
+			 $this->p->add('access', false, '1', 'Access to the site');
+			 $this->p->add('debug', false, '0', 'Non Debug mode.');
+			 $this->p->add('debug_lang', false, '0', 'Debug Language is english (UK) by default');
+			 $this->p->add('db', true, '', 'Name of database to store Joomla data in');
              $this->p->add('user', true, '', 'User account name with permissions to the Joomla database');
              $this->p->add('password', true, '', 'Password of account with permissions to the Joomla database');
              $this->p->add('host', true, '', 'URL to database host');
              $this->p->add('dbtype', false, 'sqlazure', 'Database driver to use');
-	     $this->p->add('dbprefix', false, 'jos_', 'Joomla table prefix');
+			 $this->p->add('dbprefix', false, 'jos_', 'Joomla table prefix');
              $this->p->add('live_site', false, '', 'Live Site');
              $this->p->add('secret', false, uniqid(), 'Secret');
              $this->p->add('gzip', false, '0', 'Secure auth key');
-             $this->p->add('error_reporting', false, '-1', 'default');
+			 $this->p->add('error_reporting', false, '-1', 'default');
              $this->p->add('helpurl', false, 'http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}', 'Help URL');
              $this->p->add('ftp_host', false, '127.0.0.1', 'FTP Host');
              $this->p->add('ftp_port', false, '21', 'FTP Port');
              $this->p->add('ftp_user', false, '', 'FTP User');
              $this->p->add('ftp_pass', false,'', 'FTP Password');
              $this->p->add('offset', false, 'UTC', 'Offset');
-             
              $this->p->add('mailer', false, 'mail', 'Joomla Mail');
              $this->p->add('mailfrom', false, 'info@microsoft.com', 'Mail From');
              $this->p->add('fromname', false, 'Joomla on SQLazure', 'From Name');
@@ -124,26 +125,29 @@ class Joomla
              $this->p->add('smtpport', false, '25', 'Path of current site');
              $this->p->add('caching', false, '0', 'Caching');
              $this->p->add('cache_handler', false, 'file', 'cache handler');
-             $this->p->add('cachetime', true, '15', 'Cache Time');
-             $this->p->add('MetaDesc', true, '', 'Meta Description');
+             $this->p->add('cachetime', false, '15', 'Cache Time');
+             $this->p->add('MetaDesc', false, '', 'Meta Description');
              $this->p->add('MetaKeys', false, '', 'Meta Keys');
-	     $this->p->add('MetaTitle', false, '', 'Meta Title');
-	     $this->p->add('MetaAuthor', false, '', 'Meta Author');
-	     $this->p->add('sef', false, '1', 'SEF');
-	     $this->p->add('sef_rewrite', false, '0', 'SEF Rewrite');
-	     $this->p->add('sef_suffix', false, '0', 'SEF Suffix');
-	     $this->p->add('unicodeslugs', false, '0', 'Unicode Slugs');
-	     $this->p->add('feed_limit', false, '10', 'Feed Limit');
-	     $this->p->add('log_path', false, '0', 'E:/approot/logs');
+			 $this->p->add('MetaTitle', false, '', 'Meta Title');
+			 $this->p->add('MetaAuthor', false, '', 'Meta Author');
+			 $this->p->add('sef', false, '1', 'SEF');
+			 $this->p->add('sef_rewrite', false, '0', 'SEF Rewrite');
+			 $this->p->add('sef_suffix', false, '0', 'SEF Suffix');
+			 $this->p->add('unicodeslugs', false, '0', 'Unicode Slugs');
+			 $this->p->add('feed_limit', false, '10', 'Feed Limit');
+			 $this->p->add('log_path', false, '0', 'E:/approot/logs');
              $this->p->add('tmp_path', false, '0', 'E:/approot/tmp');
              $this->p->add('lifetime', false, '15', 'Lifetime');
-	     $this->p->add('session_handler', false, 'database', 'SEF Suffix');
-             $this->p->add('source', false, 'C:/xampp/htdocs/Joomla', 'If there is an existing Joomla code base you can use it via a path');
-
+			 $this->p->add('session_handler', false, 'database', 'SEF Suffix');
+            /*$this->p->add('source', false, 'C:/abhibuild/Joomla/beta', 'If there is an existing Joomla code base you can use it via a path');*/
+		     $this->p->add('source', false, '', 'If there is an existing Joomla code base you can use it via a path');
+			 $this->p->add('sample_data', true, '', 'If set to 1, sample data is installed');
+			 $this->p->add('admin_user', true, '', 'Default admin susername');
+			 $this->p->add('admin_password', true, '', 'Default admin password');
              if(!$this->p->verify()) die($this->p->getError());
 
     }
-
+		
 
     /**
      * This method allows you to do any additional work beyond unpacking 
@@ -156,6 +160,8 @@ class Joomla
      * $this->unzip($file, $destFolder)
      */
     public function doWork() {
+		$conf = new Config();
+		
         $fs = new Filesystem();
         // Ensure tmp working dir exists
         $tmp = $this->mRootPath . "\\tmp";
@@ -170,59 +176,46 @@ class Joomla
             // Download and unpack Joomla
             $this->log('Downloading Joomla');
 			//Packaged Joomla.zip on storage/svn or git
-            $file = $this->curlFile("", $tmp);
+			$file = $this->curlFile($conf->joomla_link, $tmp);
             $this->log('Extracting Joomla');
-            $this->unzip($file, $tmp);
+			$fs->mkdir( $tmp.'/joomla/');
+            $this->unzip($file, $tmp.'/joomla/');
+			
             $this->log('Moving Joomla files to ' . $this->mAppRoot);
-            $fs->move("$tmp\Joomla", $this->mAppRoot);
-        }
-
-        // Download and unpack DB abstraction layer
-       /*
-	     $this->log('Downloading Database Abstraction Layer');
-        //$file = $this->curlFile("http://downloads.wordpress.org/plugin/wordpress-database-abstraction.1.1.0.zip", $tmp);
-        $file = $this->curlFile("http://downloads.wordpress.org/plugin/wordpress-database-abstraction.1.1.1.zip", $tmp);
-        $this->log('Extracting Database Abstraction Layer');
-        $this->unzip($file, $tmp);
-        $this->log('Moving Database Abstraction Layer files to ' . $this->mAppRoot . "\wp-content\mu-plugins");
-        $fs->copy("$tmp\wordpress-database-abstraction\wp-db-abstraction\db.php", $this->mAppRoot ."\wp-content\db.php");
-        $fs->move("$tmp\wordpress-database-abstraction", $this->mAppRoot ."\wp-content\mu-plugins");
-	   */
-
-        // Download and unpack Azure Storage Plugin
-        //instllation of plugin/compoent for cdn is separate and not as simple as wordpress
+            $fs->move("$tmp\joomla", $this->mAppRoot);
+			
+			$this->log("Downloading the CDN");
+			$file = $this->curlFile($conf->cdn_link, $tmp);
+			$this->log('Extracting CDN');
+			$fs->mkdir( $tmp.'/CDN');
+			$this->unzip($file, $tmp.'/CDN');
+			$this->log('Installing CDN...');
+			
+			$fs->copy("$tmp/CDN/azure_dependencies/standalone.php",$this->mAppRoot . "/standalone.php");
+			$fs->copy("$tmp/CDN/azure_dependencies/preflight_config.php",$this->mAppRoot . "/preflight_config.php");
+			$fs->copy("$tmp/CDN/azure_dependencies/index.php",$this->mAppRoot . "/index.php");
+		    $fs->move("$tmp/CDN/azure_dependencies/windows_azure", $this->mAppRoot . "/windows_azure");
+			$fs->move("$tmp/CDN/azure_dependencies/admin_media", $this->mAppRoot . "/administrator/components/com_media");
+		    $fs->move("$tmp/CDN/azure_dependencies/site_media/controller.php", $this->mAppRoot . "/components/com_media/controller.php");
+		    $fs->move("$tmp/CDN/azure_dependencies/admin_cdn", $this->mAppRoot . "/administrator/components/com_cdn");
+		    $fs->copy("$tmp/CDN/azure_dependencies/factory.php",$this->mAppRoot . "/libraries/joomla/factory.php");
+		    $fs->move("$tmp/CDN/azure_dependencies/plg_azure",$this->mAppRoot . "/plugins/system/plg_azure");
+		    $fs->move("$tmp/CDN/libraries/microsoft", $this->mAppRoot . "/libraries/microsoft");
+		    $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.ini");
+		    $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.sys.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.sys.ini");
+			
+			$fs->copy($this->mAppRoot.'/installation/sql/sqlazure/joomla.sql', $this->mAppRoot.'/windows_azure/sql/joomla.sql' );
+			$fs->copy($this->mAppRoot.'/installation/sql/sqlazure/sample_data.sql', $this->mAppRoot.'/windows_azure/sql/sample_data.sql' );
+			$fs->move($this->mAppRoot.'/installation', $this->mAppRoot.'/installation_bak');
+			
+	
+		}
 		
-        /*
-		 * $this->log('Downloading Azure Storage Plugin');
-		 
-		
-        $file = $this->curlFile("http://downloads.wordpress.org/plugin/windows-azure-storage.zip", $tmp);
-        $this->log('Extracting Azure Storage Plugin');
-        $this->unzip($file, $tmp);
-        $this->log('Moving Azure Storage Plugin files to ' . $this->mAppRoot . "\wp-content\plugins");
-        $fs->move("$tmp\windows-azure-storage", $this->mAppRoot . "\wp-content\plugins\windows-azure-storage");
-
-		*/
-        /*
-		No multi site support in Joomla
-		if($this->p->get('WP_ALLOW_MULTISITE') && $this->p->get('WP_ALLOW_MULTISITE') != 'false') {
-            $fs->mkdir($this->mAppRoot . "\wp-content\blogs.dir");
-            unlink("$this->mAppRoot.config");
-
-            if($this->p->get('SUBDOMAIN_INSTALL')) {
-                copy($this->mAppRoot . "\\resources\Web-network-subdomains.config", $this->mAppRoot . "\Web.config"); 
-            } else {
-                copy($this->mAppRoot . "\\resources\Web-network-subfolders.config", $this->mAppRoot . "\Web.config");
-            }
-        }
-		*/
-        // Remove tmp build folder
-        $fs->rm($tmp);
-        $fs->rm($this->mRootPath . "/Params.class.php");
-        $fs->rm($this->mRootPath . "/FileSystem.class.php");
-        
-        $this->updateJoomlaConfig();
-	    echo "\nNOTE: Do not forget to install the FileSystemDurabilityPlugin before packaging your application!";
+		 $this->updateJoomlaConfig();
+		 $this->updatePreflightConfig();
+	    			
+			
+		//echo "\nNOTE: Do not forget to install the FileSystemDurabilityPlugin before packaging your application!";
     	echo "\n\nCongratulations! You now have a brand new Windows Azure Joomla project at " . $this->mRootPath . "\n";
 
     }
@@ -279,8 +272,8 @@ class Joomla
     }
     
     /**
-     * Will update the ServiceConfiguration.cscfg file with any values 
-     * specified from the command line paramters. Tags in the .cscfg file
+     * Will update the configuration file with any values 
+     * specified from the command line paramters. Tags in the configuration file
      * will be found and replaced. Tags are of the form $tagName$
      */
     private function updateJoomlaConfig() {
@@ -292,6 +285,22 @@ class Joomla
         }
 
         file_put_contents($this->mRootPath . "/WebRole/configuration.php", $contents);
+    }
+	
+	/**
+     * Will update the preflight_config.php file with any values 
+     * specified from the command line paramters. Tags in the php file
+     * will be found and replaced. Tags are of the form $tagName$
+     */
+    private function updatePreflightConfig() {
+        $this->log("Updating preflight_config.php\n");
+         $contents = file_get_contents($this->mRootPath . "/WebRole/preflight_config.php");
+         $values = $this->p->valueArray();
+        foreach ($values as $key => $value) {
+                $contents = str_replace('$' . $key . '$', $value, $contents);
+        }
+
+        file_put_contents($this->mRootPath . "/WebRole/preflight_config.php", $contents);
     }
 
     /**
@@ -365,3 +374,4 @@ class Joomla
         return "$destFolder/$file";
     }
 }
+
