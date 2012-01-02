@@ -22,8 +22,8 @@
       <InputEndpoint name="HttpEndpoint" protocol="http" port="80" />
     </Endpoints>
     <Imports>
-    <!--  <Import moduleName="Diagnostics"/> -->
-      <Import moduleName="FileSystemDurabilityPlugin" />
+    <!--  <Import moduleName="Diagnostics"/> 
+      <Import moduleName="FileSystemDurabilityPlugin" /> -->
       <!-- For RDP access. Commented by default 
       
       <Import moduleName="RemoteAccess"/>
