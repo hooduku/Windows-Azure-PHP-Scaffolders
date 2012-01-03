@@ -211,6 +211,10 @@ class Joomla
 	
 		}
 		
+		 $fs->rm($tmp);
+		 $fs->rm($this->mRootPath."/Param.class.php");
+		 $fs->rm($this->mRootPath."/FileSystem.class.php");
+		 $fs->rm($this->mRootPath."/Config.class.php");
 		 $this->updateJoomlaConfig();
 		 $this->updatePreflightConfig();
 	    			
