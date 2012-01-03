@@ -55,22 +55,13 @@
       <Setting name="feed_limit" value="$feed_limit$" />
       <Setting name="lifetime" value="$lifetime$" />
       <Setting name="session_handler" value="$session_handler$" />
-      
-	  <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <!--
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="hooduku" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEEA0DiRg8xCrSku/+zvvAgowDQYJKoZIhvcNAQEBBQAEggEAMTTJgznUtl2Lx/teBseafL6Tia2J6im3DEmEyVcEQjpOn+rqklA/jhbs3gKdazrQmoCRJccpF+EnliamN0NaYsyfNbH2BAio/rgi4UvK+bVnwLLkCJ8dWbpowEOWcvVaOxbKHqC5qAGa8JJPjMXj3114STVlBzJtsNT2AyutgDFV8ajFxrDW0feoLXsDc/MB4CBmINSshY+Ml8DUv8ow3zdEQuIz54RQzM0Y5Yd/TWmSUGIVMvk/ONSLiOKjbTqN90PZPro1kZa1FgY+hdMW56ljtim3wS2Ds3RO0M7OaK06I4G9HOyfkSHRpdv7eMFUccYhEXCtGhT6IHxhr/3uizAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECAJyW9JTDUktgBDqF5tjg91yM/yzoPeUatBY" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2020-03-24T06:59:59.0000000Z" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
-	  
-
-      <Setting name="FileSystemDurabilityPlugin.StorageAccountName" value="$sync_account$" /> <!-- Windows Azure Storage account name -->
-      <Setting name="FileSystemDurabilityPlugin.StorageAccountPrimaryKey" value="$sync_key$" /> <!-- Windows Azure Storage account key -->
-      <Setting name="FileSystemDurabilityPlugin.SyncContainerName" value="$sync_container$" /> <!-- Valid container name -->
-      <Setting name="FileSystemDurabilityPlugin.LocalFolderToSync" value="$sync_folder$" /> <!-- components folder -->
-      <Setting name="FileSystemDurabilityPlugin.FileNameIncludesToSync" value="" /> <!-- Optional: To sync specific files only -->
-      <Setting name="FileSystemDurabilityPlugin.ExcludePathsFromSync" value="" />   <!-- Optional. To exclude some folders from sync -->
-      <Setting name="FileSystemDurabilityPlugin.ExcludeSubDirectories" value="false" /> <!-- To exclude sub directories, set this value as true -->
-      <Setting name="FileSystemDurabilityPlugin.SyncFrequencyInSeconds" value="7200" /> <!-- Keep this value large to minimize Windows Azure Storage Transaction cost. Use 0 value to pause the sync. -->
+	-->  
     </ConfigurationSettings>
     <!-- Certificate for RDP access. Commented by default -->
     <!--
