@@ -210,11 +210,10 @@ class Joomla
 			
 	
 		}
-		
-		 $fs->rm($tmp);
-		 $fs->rm($this->mRootPath."/Param.class.php");
-		 $fs->rm($this->mRootPath."/FileSystem.class.php");
-		 $fs->rm($this->mRootPath."/Config.class.php");
+		// Remove tmp build folder
+        $fs->rm($tmp);
+        $fs->rm($this->mRootPath . "/Params.class.php");
+        $fs->rm($this->mRootPath . "/FileSystem.class.php");
 		 $this->updateJoomlaConfig();
 		 $this->updatePreflightConfig();
 	    			
@@ -378,4 +377,3 @@ class Joomla
         return "$destFolder/$file";
     }
 }
-

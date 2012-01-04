@@ -10,18 +10,6 @@
 class FileSystem {
     
     
-    /**
-     * Moves files inside the $src folder to the $dest folder. If $dest does
-     * not exist it will be created.
-     * 
-     * NOTE: Moves the files _inside_ the $src folder, not the $src folder itself
-     * 
-     * This function removes $src
-     * 
-     * @param String $src - File path to source folder
-     * @param type $dest - File path to destination folder
-     * @return false on failure 
-     */
     function move($src, $dest){
 
         // If source is not a directory stop processing
@@ -63,6 +51,7 @@ class FileSystem {
         // If source is not a directory stop processing
         if(!is_dir($src)) {
             rename($src, $dest);
+			
             return true;
         }
 
@@ -84,6 +73,8 @@ class FileSystem {
             }
         }
     }
+	
+	
     
     /**
      * Creates a new directory. If the path to the directory does not
