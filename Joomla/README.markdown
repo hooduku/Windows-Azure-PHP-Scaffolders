@@ -26,7 +26,6 @@
 
    ==================
         --OutputPath=.\build\Joomla
-        --DiagnosticsConnectionString="DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
         --db=Database name
         --squser=*****@*****
         --sql_azure_password=*****
