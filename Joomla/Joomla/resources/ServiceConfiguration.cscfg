@@ -6,6 +6,7 @@
      <!-- <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />      -->
       <Setting name="offline" value="$offline$" />
       <Setting name="offline_message" value="$offline_message$" />
+	  <Setting name="display_offline_message" value="$display_offline_message$" />
       <Setting name="sitename" value="$sitename$" />
       <Setting name="editor" value="$editor$" />
       <Setting name="list_limit" value="$list_limit$" />
@@ -54,12 +55,14 @@
       <Setting name="unicodeslugs" value="$unicodeslugs$" />
       <Setting name="feed_limit" value="$feed_limit$" />
       <Setting name="lifetime" value="$lifetime$" />
+	  <Setting name="log_path" value="$log_path$" />
+	  <Setting name="tmp_path" value="$tmp_path$" />
       <Setting name="session_handler" value="$session_handler$" />
       
 	  <!--
 	  <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="hooduku" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEEA0DiRg8xCrSku/+zvvAgowDQYJKoZIhvcNAQEBBQAEggEAMTTJgznUtl2Lx/teBseafL6Tia2J6im3DEmEyVcEQjpOn+rqklA/jhbs3gKdazrQmoCRJccpF+EnliamN0NaYsyfNbH2BAio/rgi4UvK+bVnwLLkCJ8dWbpowEOWcvVaOxbKHqC5qAGa8JJPjMXj3114STVlBzJtsNT2AyutgDFV8ajFxrDW0feoLXsDc/MB4CBmINSshY+Ml8DUv8ow3zdEQuIz54RQzM0Y5Yd/TWmSUGIVMvk/ONSLiOKjbTqN90PZPro1kZa1FgY+hdMW56ljtim3wS2Ds3RO0M7OaK06I4G9HOyfkSHRpdv7eMFUccYhEXCtGhT6IHxhr/3uizAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECAJyW9JTDUktgBDqF5tjg91yM/yzoPeUatBY" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="xx" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="xxx/+zvvAgowDQYJKoZIhvcNAQEBBQAEggEAMTTJgznUtl2Lx/teBseafL6Tia2J6im3DEmEyVcEQjpOn+rqklA/jhbs3gKdazrQmoCRJccpF+EnliamN0NaYsyfNbH2BAio/rgi4UvK+bVnwLLkCJ8dWbpowEOWcvVaOxbKHqC5qAGa8JJPjMXj3114STVlBzJtsNT2AyutgDFV8ajFxrDW0feoLXsDc/MB4CBmINSshY+Ml8DUv8ow3zdEQuIz54RQzM0Y5Yd/TWmSUGIVMvk/ONSLiOKjbTqN90PZPro1kZa1FgY+hdMW56ljtim3wS2Ds3RO0M7OaK06I4G9HOyfkSHRpdv7eMFUccYhEXCtGhT6IHxhr/3uizAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECAJyW9JTDUktgBDqF5tjg91yM/yzoPeUatBY" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2020-03-24T06:59:59.0000000Z" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
 	  -->
