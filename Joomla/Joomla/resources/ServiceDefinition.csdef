@@ -33,7 +33,9 @@
     <ConfigurationSettings>
       <Setting name="offline" />
       <Setting name="offline_message" />
-    <Setting name="display_offline_message" />
+	  <Setting name="display_offline_message" />
+	  <Setting name="offline_image" />
+	  <Setting name="captcha" />
       <Setting name="sitename" />
       <Setting name="editor" />
       <Setting name="list_limit"/>
