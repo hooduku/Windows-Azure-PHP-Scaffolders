@@ -33,6 +33,7 @@
     <ConfigurationSettings>
       <Setting name="offline" />
       <Setting name="offline_message" />
+    <Setting name="display_offline_message" />
       <Setting name="sitename" />
       <Setting name="editor" />
       <Setting name="list_limit"/>
@@ -81,6 +82,8 @@
       <Setting name="unicodeslugs" />
       <Setting name="feed_limit"/>
       <Setting name="lifetime" />
+	  <Setting name="log_path"/>
+	  <Setting name="tmp_path"/>
       <Setting name="session_handler"  />
     </ConfigurationSettings>
   </WebRole>
