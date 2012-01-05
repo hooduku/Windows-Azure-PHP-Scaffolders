@@ -15,7 +15,7 @@ echo Building scaffold .phar file
  call scaffolder build -in="%PWD%\Joomla" -out="%PWD%\build\Joomla.phar"
 
 echo Creating project directories
-call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -db jbase -user "demosql@xxxxxbujiw" -password "SamHoustonxxxx" -host "xxx4mbujxxw.database.windows.net"  -sample_data 1 -admin_xxuser "admin" -admin_password "admxxin"
+call scaffolder run -out="%PWD%\build\Joomla" -s="%PWD%\build\Joomla.phar" -db jbase -user "demosql@xxxxxbujiw" -password "SamHoustonxxxx" -host "xxx4mbujxxw.database.windows.net"  -sample_data 1 -admin_user "adminXX" -admin_password "admxxin"
 
 
 REM -out="%PWD%\build\Joomla"
