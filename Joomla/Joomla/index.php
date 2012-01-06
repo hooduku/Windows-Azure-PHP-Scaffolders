@@ -186,43 +186,40 @@ class Joomla
             $this->log('Moving Joomla files to ' . $this->mAppRoot);
             $fs->move("$tmp\joomla", $this->mAppRoot);
 			
-			$this->log("Downloading the CDN");
-			$file = $this->curlFile($this->conf->cdn_link, $tmp);
-			$this->log('Extracting CDN');
-			$fs->mkdir( $tmp.'/CDN');
-			$this->unzip($file, $tmp.'/CDN');
-			$this->log('Installing CDN...');
+	    $this->log("Downloading the CDN");
+	    $file = $this->curlFile($this->conf->cdn_link, $tmp);
+	    $this->log('Extracting CDN');
+	    $fs->mkdir( $tmp.'/CDN');
+	    $this->unzip($file, $tmp.'/CDN');
+	    $this->log('Installing CDN...');
 			
-			$fs->copy("$tmp/CDN/azure_dependencies/standalone.php",$this->mAppRoot . "/standalone.php");
-			$fs->copy("$tmp/CDN/azure_dependencies/preflight_config.php",$this->mAppRoot . "/preflight_config.php");
-			$fs->copy("$tmp/CDN/azure_dependencies/index.php",$this->mAppRoot . "/index.php");
-		    $fs->move("$tmp/CDN/azure_dependencies/windows_azure", $this->mAppRoot . "/windows_azure");
-			$fs->move("$tmp/CDN/azure_dependencies/admin_media", $this->mAppRoot . "/administrator/components/com_media");
-		    $fs->move("$tmp/CDN/azure_dependencies/site_media/controller.php", $this->mAppRoot . "/components/com_media/controller.php");
-		    $fs->move("$tmp/CDN/azure_dependencies/admin_cdn", $this->mAppRoot . "/administrator/components/com_cdn");
-		    $fs->copy("$tmp/CDN/azure_dependencies/factory.php",$this->mAppRoot . "/libraries/joomla/factory.php");
-		    $fs->move("$tmp/CDN/azure_dependencies/plg_azure",$this->mAppRoot . "/plugins/system/plg_azure");
-		    $fs->move("$tmp/CDN/libraries/microsoft", $this->mAppRoot . "/libraries/microsoft");
-		    $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.ini");
-		    $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.sys.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.sys.ini");
+	   $fs->copy("$tmp/CDN/azure_dependencies/standalone.php",$this->mAppRoot . "/standalone.php");
+	   $fs->copy("$tmp/CDN/azure_dependencies/preflight_config.php",$this->mAppRoot . "/preflight_config.php");
+	   $fs->copy("$tmp/CDN/azure_dependencies/index.php",$this->mAppRoot . "/index.php");
+	   $fs->move("$tmp/CDN/azure_dependencies/windows_azure", $this->mAppRoot . "/windows_azure");
+	   $fs->move("$tmp/CDN/azure_dependencies/admin_media", $this->mAppRoot . "/administrator/components/com_media");
+	   $fs->move("$tmp/CDN/azure_dependencies/site_media/controller.php", $this->mAppRoot . "/components/com_media/controller.php");
+	   $fs->move("$tmp/CDN/azure_dependencies/admin_cdn", $this->mAppRoot . "/administrator/components/com_cdn");
+           $fs->copy("$tmp/CDN/azure_dependencies/factory.php",$this->mAppRoot . "/libraries/joomla/factory.php");
+	   $fs->move("$tmp/CDN/azure_dependencies/plg_azure",$this->mAppRoot . "/plugins/system/plg_azure");
+	   $fs->move("$tmp/CDN/libraries/microsoft", $this->mAppRoot . "/libraries/microsoft");
+	   $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.ini");
+	   $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.sys.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.sys.ini");
 			
-			$fs->copy($this->mAppRoot.'/installation/sql/sqlazure/joomla.sql', $this->mAppRoot.'/windows_azure/sql/joomla.sql' );
-			$fs->copy($this->mAppRoot.'/installation/sql/sqlazure/sample_data.sql', $this->mAppRoot.'/windows_azure/sql/sample_data.sql' );
-			$fs->move($this->mAppRoot.'/installation', $this->mAppRoot.'/installation_bak');
-			
+	   $fs->copy($this->mAppRoot.'/installation/sql/sqlazure/joomla.sql', $this->mAppRoot.'/windows_azure/sql/joomla.sql' );
+	   $fs->copy($this->mAppRoot.'/installation/sql/sqlazure/sample_data.sql', $this->mAppRoot.'/windows_azure/sql/sample_data.sql' );
+	   $fs->move($this->mAppRoot.'/installation', $this->mAppRoot.'/installation_bak');
+	}
 	
-		}
-		// Remove tmp build folder
+	// Remove tmp build folder
         $fs->rm($tmp);
         $fs->rm($this->mRootPath . "/Params.class.php");
         $fs->rm($this->mRootPath . "/FileSystem.class.php");
-		$fs->rm($this->mRootPath . "/Config.class.php");
-		$this->updateJoomlaConfig();
-		$this->updatePreflightConfig();
-	    			
+	$fs->rm($this->mRootPath . "/Config.class.php");
+	$this->updateJoomlaConfig();
+	$this->updatePreflightConfig();
 			
-		//echo "\nNOTE: Do not forget to install the FileSystemDurabilityPlugin before packaging your application!";
-    	echo "\n\nCongratulations! You now have a brand new Windows Azure Joomla project at " . $this->mRootPath . "\n";
+	echo "\n\nCongratulations! You now have a brand new Windows Azure Joomla project at " . $this->mRootPath . "\n";
 
     }
 
