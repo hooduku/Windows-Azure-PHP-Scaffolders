@@ -113,8 +113,8 @@ class Joomla
            $this->p->add('ftp_host', false, '127.0.0.1', 'FTP Host');
            $this->p->add('ftp_port', false, '21', 'FTP Port');
            $this->p->add('ftp_user', false, '', 'FTP User');
-           $this->p->add('ftp_pass', false,'', 'FTP Password');
-	   $this->p->add('ftp_root', false,'', 'FTP Password');
+           $this->p->add('ftp_root', false,'', 'FTP Root');
+   	   $this->p->add('ftp_enable', false,'', 'FTP Enable');
 	   $this->p->add('ftp_enable', false,'', 'FTP Password');
            $this->p->add('offset', false, 'UTC', 'Offset');
 	   $this->p->add('offset_user', false, 'UTC', 'Offset User');
