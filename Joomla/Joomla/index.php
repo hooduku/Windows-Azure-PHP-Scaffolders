@@ -200,8 +200,7 @@ class Joomla
 	   $fs->move("$tmp/CDN/azure_dependencies/admin_media", $this->mAppRoot . "/administrator/components/com_media");
 	   $fs->move("$tmp/CDN/azure_dependencies/site_media/controller.php", $this->mAppRoot . "/components/com_media/controller.php");
 	   $fs->move("$tmp/CDN/azure_dependencies/admin_cdn", $this->mAppRoot . "/administrator/components/com_cdn");
-           $fs->copy("$tmp/CDN/azure_dependencies/factory.php",$this->mAppRoot . "/libraries/joomla/factory.php");
-	   $fs->move("$tmp/CDN/azure_dependencies/plg_azure",$this->mAppRoot . "/plugins/system/plg_azure");
+ 	   $fs->move("$tmp/CDN/azure_dependencies/plg_azure",$this->mAppRoot . "/plugins/system/plg_azure");
 	   $fs->move("$tmp/CDN/libraries/microsoft", $this->mAppRoot . "/libraries/microsoft");
 	   $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.ini");
 	   $fs->copy("$tmp/CDN/language/en-GB/en-GB.com_cdn.sys.ini", $this->mAppRoot . "/administrator/language/en-GB/en-GB.com_cdn.sys.ini");
